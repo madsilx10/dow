@@ -597,7 +597,7 @@ async function doConnectTelegram(w, token, tgSession) {
     // Auto-connect pakai session string Pyrogram lewat tele_connect.py
     console.log('[telegram] auto-connect pakai session string...');
     try {
-      const out = execFileSync('python3', ['tele_connect.py', tgSession, url], { encoding: 'utf8', timeout: 180000 });
+      const out = execFileSync('python3', ['tele_connect.py', tgSession, url], { encoding: 'utf8', timeout: 180000, stdio: ['ignore', 'pipe', 'ignore'] });
       out.trim().split(/\r?\n/).forEach((l) => console.log(l));
     } catch (e) {
       const out = `${e.stdout || ''}${e.stderr || ''}`.trim();
